@@ -1,4 +1,4 @@
-with open('test2.txt', 'r') as file:
+with open('input/test2.txt', 'r') as file:
     lines = [line.rstrip() for line in file]
 
 lines1 = []
@@ -21,7 +21,13 @@ def function2(lines):
 def function3(lines):
     i = 0
     for line in lines: 
-        i = i + 1
+        for num in line: 
+            line_to_check = line
+            line_to_check.remove(num)
+            if all(a < b for a,b in zip(line_to_check, line_to_check[1:])) or all(a > b for a,b in zip(line_to_check, line_to_check[1:])):
+                if all(abs(a - b) < 4 for a,b in zip(line_to_check,line_to_check[1:])):
+                    print(line_to_check)
+                    i = i + 1
     return i
 
 

@@ -1,4 +1,4 @@
-with open('input.txt', 'r') as file:
+with open('input/input.txt', 'r') as file:
     lines = [line.rstrip() for line in file]
 
 list1 = []
