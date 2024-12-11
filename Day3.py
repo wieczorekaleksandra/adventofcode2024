@@ -1,6 +1,6 @@
 import re
 
-with open('input/test3.txt', 'r') as file:
+with open('input/input3.txt', 'r') as file:
     lines = [line.rstrip() for line in file]
 
 print(lines)
@@ -28,6 +28,7 @@ flat_list = [
     for xs in mul
     for x in xs
 ]
+print("FLAT LIST")
 print(flat_list)
 
 def remove_between_elements(lst, start, end):
@@ -38,12 +39,13 @@ def remove_between_elements(lst, start, end):
             skip = True
         elif item == end and skip:  
             skip = False
-        elif not skip:  
+        if not skip and item != start and item != end :  
             result.append(item)
 
     return result
 
 result2 = remove_between_elements(flat_list, "don't()", "do()")
+print("WITHOUT dont and do and anythink between")
 print(result2)
 
 pattern1_num = r"[0-9]+"
@@ -51,6 +53,8 @@ pattern1_num = r"[0-9]+"
 x = []
 for num in result2:
     x.append(re.findall(pattern1_num, num))
+
+print("ONLY NUMBERS ")
 print(x)
 data = [[int(j) for j in i] for i in x]
 result = sum([x[0] * x[1] for x in data])
